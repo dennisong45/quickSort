@@ -24,19 +24,26 @@ void swap( int & x , int &y){ //3  //2
 // Partition the vector
 // Point of the function is to take the alst element as pivot, places the pivot element correctly.
 //Small on the left, big on the right of the pivot.
-
+//                      p
 // vect { 2,6,5,0,8,7,1,3}
-//      i               p
+//          i                
 //        j      
-
+// i =,j   start,end is pointer , pivot is value.
 void partition(vector<int>vect , int start, int end){
-  int pivot = vect.size(); //Initialize pivot
-  int i = start-1;
+  int pivot = vect[end];
+  int pIndex = start;
 
-  for (int j = start; j<=end-1; j++){
-    
+  for(int i = 0 ; i < vect.size()-1; i++){
+
+    if(vect[i] <= pivot){
+      cout << "swapping\n";
+      swap(vect[i],vect[pIndex]);
+      pIndex = pIndex+1;
+    }
   }
-  
+    for(int x : vect){
+    cout << x;
+  }
 }
 
 
@@ -45,7 +52,8 @@ int main() {
   int count = 0;
   vector<int> vect{ 2,6,5,0,8,7,1,3}; 
   
-  
+  partition(vect, 0,vect.size());
+
   //Create a recursive function that divide and conquer.
 
   
